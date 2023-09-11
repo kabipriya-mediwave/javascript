@@ -1,6 +1,7 @@
 let favMovies= [
     // movie id
     // moviename
+    //moviereleasedate
     {
       id :'1',
       title: 'PARANORMAL ACTIVITY',
