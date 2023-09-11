@@ -71,7 +71,7 @@ let favMovies= [
     // title
     const h2 = document.createElement('h2')
     h2.innerText = movie['title'];
-  
+    // releasedate
     const h3 = document.createElement('h3')
     h3.innerText = movie['releaseDate']
 
