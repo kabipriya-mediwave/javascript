@@ -74,7 +74,7 @@ let favMovies= [
     // releasedate
     const h3 = document.createElement('h3')
     h3.innerText = movie['releaseDate']
-
+    // button
     const button = document.createElement("button");
     button.innerText = "Delete";
     button.addEventListener('click', function(){
