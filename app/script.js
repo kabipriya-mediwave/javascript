@@ -1,4 +1,5 @@
 let favMovies= [
+    // movie id
     // moviename
     {
       id :'1',
