@@ -1,11 +1,14 @@
 body {
     font-family: sans-serif;
+    background-color: whitesmoke;
   }
   #app{
+   
     display: grid;
-    grid-template-columns: auto auto auto;
-    border: 5px solid black;
-    background-color: antiquewhite;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 20px;
+    padding: 20px;
+   
   }
   .movie-card {
     
@@ -29,6 +32,36 @@ body {
     margin-bottom:20px;
     font-size:20px;
     margin-left:20px;
-    
-    
+    border: 5px solid black;
+    background-color: antiquewhite;
   }
+  #movie-name{
+    margin-left:10px;
+    margin-bottom:5px;
+  }
+  #movie-year{
+    margin-left:22px;
+  }
+  #button1{
+    margin-top:30px;
+     margin-left:50px;
+     margin-bottom:30px;
+     background-color: beige;
+     font-size: 20px;
+     border-radius: 12px;
+  }
+  @media (max-width: 768px) {
+    #app{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 480px) {
+    #app{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 320px) {
+    #app{
+        grid-template-columns: 1fr;
+    }
+}

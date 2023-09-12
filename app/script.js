@@ -1,73 +1,76 @@
 // movie id
 // moviename
 //moviereleasedate
-let favMovies= [
+// let favMovies= [
     
-    {
-      id :'1',
-      title: 'PARANORMAL ACTIVITY',
-      releaseDate: '2010'
-    },
-    {
-      id :'2',
-      title: 'INSIDIOUS',
-      releaseDate: '2011'
-    },
-    { 
-        id :'3',
-        title: 'THE RING',
-        releaseDate: '2010'
-    },
-    {   
-        id :'4',
-        title: 'PIRATES OF THE CARIBBEAN',
-        releaseDate: '2012'
-    },
-    {   
-        id :'5',
-        title: 'FAST AND FURIOUS',
-        releaseDate: '2010'
-    },
-    {
-        id :'6',
-        title: 'ALICE IN WONDERLAND',
-        releaseDate: '2014'
-    },  
-    {
-        id :'7',
-        title: 'NARNIA',
-        releaseDate: '2010'
-    },
-    {
-        id :'8',
-        title: 'HARRY POTTER',
-        releaseDate: '2006'
-    },
-    {   
-        id :'9',
-        title: 'GRUDGE',
-        releaseDate: '2004'
-    },
-    {
-        id :'10',
-        title: 'HOW TO TRAIN YOUR DRAGON',
-        releaseDate: '2011'
-    },
-    {
-        id :'11',
-        title: 'ENOLA HOLMES',
-        releaseDate: '2018'
-    },
-    {
-        id :'12',
-        title: 'SEA BEAST',
-        releaseDate: '2022'
-    },
-  ];
+//     {
+//       id :'1',
+//       title: 'PARANORMAL ACTIVITY',
+//       releaseDate: '2010',
+//       isEdit:false
+//     },
+    // {
+    //   id :'2',
+    //   title: 'INSIDIOUS',
+    //   releaseDate: '2011'
+    // },
+    // { 
+    //     id :'3',
+    //     title: 'THE RING',
+    //     releaseDate: '2010'
+    // },
+    // {   
+    //     id :'4',
+    //     title: 'PIRATES OF THE CARIBBEAN',
+    //     releaseDate: '2012'
+    // },
+    // {   
+    //     id :'5',
+    //     title: 'FAST AND FURIOUS',
+    //     releaseDate: '2010'
+    // },
+    // {
+    //     id :'6',
+    //     title: 'ALICE IN WONDERLAND',
+    //     releaseDate: '2014'
+    // },  
+    // {
+    //     id :'7',
+    //     title: 'NARNIA',
+    //     releaseDate: '2010'
+    // },
+    // {
+    //     id :'8',
+    //     title: 'HARRY POTTER',
+    //     releaseDate: '2006'
+    // },
+    // {   
+    //     id :'9',
+    //     title: 'GRUDGE',
+    //     releaseDate: '2004'
+    // },
+    // {
+    //     id :'10',
+    //     title: 'HOW TO TRAIN YOUR DRAGON',
+    //     releaseDate: '2011'
+    // },
+    // {
+    //     id :'11',
+    //     title: 'ENOLA HOLMES',
+    //     releaseDate: '2018'
+    // },
+    // {
+    //     id :'12',
+    //     title: 'SEA BEAST',
+    //     releaseDate: '2022'
+    // },
+//   ];
+   
+  let favMovies= [];
 
   function makeMovieDiv(movie) {
     if (movie.isEdit) {
-        // show edit form
+      
         const div = document.createElement('div')
         div.setAttribute('class', 'movie-card')
 
@@ -98,6 +101,7 @@ let favMovies= [
             favMovies[toUpdateIndex]['releaseDate'] = newYear
             favMovies[toUpdateIndex]['isEdit'] = false
             updateMovieListUI()
+            saveToLocalStorage()
           }
         })
     
@@ -125,7 +129,7 @@ let favMovies= [
     deleteBtn.innerText = 'Delete';
     deleteBtn.addEventListener('click', function() {
       removeMovie(movie['id'])
-})
+})   //update
      const editBtn = document.createElement('button');
      editBtn.innerText = 'update';
      editBtn.addEventListener('click', function() {
@@ -158,6 +162,9 @@ let favMovies= [
   function addMovie(movie) {
     favMovies.push(movie)
     updateMovieListUI()
+    saveToLocalStorage()
+   
+    
   }
   
   function appendToApp(movieDiv) {
@@ -189,7 +196,8 @@ function hookForm() {
       const movie = {
         id: new Date().getTime(),
         title: name,
-        releaseDate: year
+        releaseDate: year,
+        isEdit: false
       }
       addMovie(movie);
       fun();
@@ -198,12 +206,14 @@ function hookForm() {
   function fun(){  
     document.querySelector("#add-movie-form").reset();  
   }   
+  
   function saveToLocalStorage() {
     const str = JSON.stringify(favMovies)
     localStorage.setItem('my-movie-list', str)
   }
   
-  function getFromLocalStorage() {
+  function getFromLocalStorage() 
+  {
     const str = localStorage.getItem('my-movie-list')
     if (!str) {
       favMovies =  []
@@ -212,8 +222,7 @@ function hookForm() {
     }
   }
   
- 
- 
+  getFromLocalStorage()
   updateMovieListUI()
   hookForm()
   
