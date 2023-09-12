@@ -192,7 +192,7 @@ function hookForm() {
       const name = document.querySelector('#movie-name').value
       const year = document.querySelector('#movie-year').value
   
-    
+       
       const movie = {
         id: new Date().getTime(),
         title: name,
@@ -221,6 +221,7 @@ function hookForm() {
       favMovies = JSON.parse(str)
     }
   }
+  
   
   getFromLocalStorage()
   updateMovieListUI()

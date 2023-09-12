@@ -9,16 +9,18 @@
 </head>
 <body>
 
-    <form id="add-movie-form">
+    <form id="add-movie-form" method="post" action="/">
         <label for="movie-name">Movie Name</label>
         <input type="text" name="movie-name"
           placeholder="Enter movie name"
-          id="movie-name" />
+          id="movie-name" 
+          required/>
          <br>
         <label for="movie-year">Movie Year</label>
         <input type="number" name="movie-year"
           placeholder="Enter movie year"
-          id="movie-year" />
+          id="movie-year" 
+          required/>
         <br>
         <input type="submit" value="Add movie" id="button1">
 
