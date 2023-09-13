@@ -95,17 +95,22 @@
         button.addEventListener('click', function() {
           const newTitle = document.querySelector(`#edit-${movie.id}-name`).value
           const newYear = document.querySelector(`#edit-${movie.id}-year`).value
-         
+          if (!newTitle || !newYear) {
+            alert("Enter all the field");
+          } else {
+            if (newYear > new Date().getFullYear() ) {
+              alert("enter correct year");
+            } else if (newYear < 1900) {
+              alert("Enter valid year");
+            } else {
           const toUpdateIndex = favMovies.findIndex((m) => m.id == movie.id)
-         
-          
           if (toUpdateIndex != -1) {
             favMovies[toUpdateIndex]['title'] = newTitle
             favMovies[toUpdateIndex]['releaseDate'] = newYear
             favMovies[toUpdateIndex]['isEdit'] = false
             updateMovieListUI()
             saveToLocalStorage()
-          
+          }}
           }
         })
     
@@ -198,7 +203,7 @@ function hookForm() {
       const name = document.querySelector('#movie-name').value
       const year = document.querySelector('#movie-year').value
   
-      if(year<=2023 && year >= 1200){
+      if(year<=2023 && year >= 1900){
       const movie = {
         id: new Date().getTime(),
         title: name,
