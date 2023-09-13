@@ -87,6 +87,7 @@
         yearInput.setAttribute('placeholder', 'Enter movie year')
         yearInput.setAttribute('id', `edit-${movie.id}-year`)
         yearInput.setAttribute('value', movie.releaseDate)
+       
     
         const button = document.createElement('button')
         button.innerText = 'Update movie'
@@ -94,14 +95,17 @@
         button.addEventListener('click', function() {
           const newTitle = document.querySelector(`#edit-${movie.id}-name`).value
           const newYear = document.querySelector(`#edit-${movie.id}-year`).value
-    
+         
           const toUpdateIndex = favMovies.findIndex((m) => m.id == movie.id)
+         
+          
           if (toUpdateIndex != -1) {
             favMovies[toUpdateIndex]['title'] = newTitle
             favMovies[toUpdateIndex]['releaseDate'] = newYear
             favMovies[toUpdateIndex]['isEdit'] = false
             updateMovieListUI()
             saveToLocalStorage()
+          
           }
         })
     
@@ -186,13 +190,15 @@ function updateMovieListUI() {
   }
 }
 function hookForm() {
+  
     const form = document.querySelector('#add-movie-form')
     form.addEventListener('submit', function(e) {
       e.preventDefault()
+     
       const name = document.querySelector('#movie-name').value
       const year = document.querySelector('#movie-year').value
   
-       
+      if(year<=2023 && year >= 1200){
       const movie = {
         id: new Date().getTime(),
         title: name,
@@ -201,12 +207,17 @@ function hookForm() {
       }
       addMovie(movie);
       fun();
+    }else{
+       alert("Enter the valid year");
+      }
     })
   }
   function fun(){  
     document.querySelector("#add-movie-form").reset();  
   }   
   
+    
+
   function saveToLocalStorage() {
     const str = JSON.stringify(favMovies)
     localStorage.setItem('my-movie-list', str)
